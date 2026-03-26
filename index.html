@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио — Копирайтер & SMM</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero h1 span { color: #64b5f6; }
+    .hero p {
+      font-size: 18px;
+      opacity: 0.8;
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 48px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 36px;
+      font-weight: 700;
+      color: #64b5f6;
+    }
+    .stat-label {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    /* SERVICES */
+    .section { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #6e6e73;
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid #e5e5e7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: #6e6e73;
+      margin-bottom: 16px;
+    }
+    .service-price {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0071e3;
+    }
+
+    /* CASES */
+    .cases-section {
+      background: white;
+      padding: 64px 40px;
+    }
+    .cases-inner { max-width: 1100px; margin: 0 auto; }
+
+    .case-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 48px 0;
+      border-bottom: 1px solid #e5e5e7;
+    }
+    .case-card:last-child { border-bottom: none; }
+    .case-card.reverse { direction: rtl; }
+    .case-card.reverse > * { direction: ltr; }
+
+    .case-image {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #f0f0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .case-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .case-image-placeholder {
+      text-align: center;
+      color: #999;
+      padding: 20px;
+    }
+    .case-image-placeholder .emoji { font-size: 48px; margin-bottom: 12px; }
+    .case-image-placeholder p { font-size: 13px; line-height: 1.5; }
+
+    .case-tag {
+      display: inline-block;
+      background: #f0f7ff;
+      color: #0071e3;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .case-content h3 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .case-content .task {
+      color: #6e6e73;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+    .case-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .result-item {
+      background: #f5f5f7;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .result-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0071e3;
+    }
+    .result-label {
+      font-size: 13px;
+      color: #6e6e73;
+      margin-top: 4px;
+    }
+    .case-price {
+      font-size: 15px;
+      color: #6e6e73;
+    }
+    .case-price strong { color: #1d1d1f; }
+
+    /* PREVIEW TEXT */
+    .post-preview {
+      background: #f9f9f9;
+      border-left: 3px solid #0071e3;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #444;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* PROCESS */
+    .process-section {
+      background: #f5f5f7;
+      padding: 64px 40px;
+    }
+    .process-inner { max-width: 1100px; margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .step {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+    .step-num {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #0071e3, #00b4d8);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 18px;
+      margin: 0 auto 16px;
+    }
+    .step h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .step p { font-size: 13px; color: #6e6e73; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+      padding: 80px 40px;
+      text-align: center;
+      color: white;
+    }
+    .cta-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { font-size: 18px; opacity: 0.8; margin-bottom: 36px; }
+    .cta-btn {
+      display: inline-block;
+      background: #0071e3;
+      color: white;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 980px;
+      font-size: 17px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #0077ed; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      .hero-stats { gap: 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .case-card { grid-template-columns: 1fr; }
+      .case-card.reverse { direction: ltr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Копирайтер & SMM-специалист</div>
+  <h1>Тексты, которые<br><span>продают и вовлекают</span></h1>
+  <p>Пишу для бизнеса: лендинги, посты в Telegram и соцсети, статьи, email-рассылки. Работаю с AI — быстро, качественно, в срок.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Выполненных проектов</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3×</div>
+      <div class="stat-label">Средний рост охватов</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Сдача в срок</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="section">
+  <div class="section-title">Услуги</div>
+  <div class="section-heading">Что я делаю</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✍️</div>
+      <h3>Тексты для лендингов</h3>
+      <p>Полный текст страницы: заголовок, блок боли, оффер, преимущества, FAQ, призыв к действию</p>
+      <div class="service-price">от 2 500 ₽</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>SMM и Telegram</h3>
+      <p>Контент-планы и серии постов для Telegram, VK, Instagram. Разные форматы и рубрики</p>
+      <div class="service-price">от 2 000 ₽ / 5 постов</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📰</div>
+      <h3>Статьи для блогов</h3>
+      <p>Полезные и SEO-оптимизированные статьи для сайтов, Яндекс Дзена, корпоративных блогов</p>
+      <div class="service-price">от 1 800 ₽</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📧</div>
+      <h3>Email-рассылки</h3>
+      <p>Цепочки писем, продающие рассылки, welcome-серии и триггерные письма</p>
+      <div class="service-price">от 1 500 ₽ / письмо</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Контент-план</h3>
+      <p>Стратегия и план публикаций на месяц: рубрики, темы, форматы, описание каждого поста</p>
+      <div class="service-price">от 3 500 ₽</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Рекламные тексты</h3>
+      <p>Объявления для таргета и контекста, тексты для баннеров, заголовки и описания</p>
+      <div class="service-price">от 1 200 ₽</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASES -->
+<section class="cases-section">
+  <div class="cases-inner">
+    <div class="section-title">Портфолио</div>
+    <div class="section-heading">Примеры работ</div>
+
+    <!-- CASE 1 -->
+    <div class="case-card">
+      <div class="case-image">
+        <img src="images/case1.jpg" alt="Фитнес-студия Body Lab">
+      </div>
+      <div class="case-content">
+        <span class="case-tag">SMM / Telegram</span>
+        <h3>Фитнес-студия Body Lab</h3>
+        <p class="task">Нет активности в соцсетях, клиенты не возвращаются. Нужен контент-план и серия постов для Telegram и Instagram.</p>
+        <div class="case-results">
+          <div class="result-item">
+            <div class="result-num">2.8×</div>
+            <div class="result-label">Рост охватов за месяц</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">14</div>
+            <div class="result-label">Новых записей через Telegram</div>
+          </div>
+        </div>
+        <div class="post-preview">
+          «Почему вы бросаете тренировки на 3-й неделе? Есть три причины, и ни одна из них — не лень...»
+        </div>
+        <p class="case-price" style="margin-top:16px">Контент-план + 20 постов: <strong>18 000 ₽/мес</strong></p>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="case-card reverse">
+      <div class="case-image">
+        <img src="images/case2.jpg" alt="Юридическая компания">
+      </div>
+      <div class="case-content">
+        <span class="case-tag">Лендинг / Копирайтинг</span>
+        <h3>Юридическая компания — споры с застройщиками</h3>
+        <p class="task">Старый сайт не продавал: сухой текст, юридический язык. Нужен новый текст лендинга с акцентом на доверие и результат.</p>
+        <div class="case-results">
+          <div class="result-item">
+            <div class="result-num">4.7%</div>
+            <div class="result-label">Конверсия (было 1.2%)</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">3×</div>
+            <div class="result-label">Рост входящих заявок</div>
+          </div>
+        </div>
+        <div class="post-preview">
+          «Застройщик сдал квартиру с дефектами? Взыщем неустойку и компенсацию — без предоплаты. Работаем за % от результата...»
+        </div>
+        <p class="case-price" style="margin-top:16px">Текст лендинга (6 блоков): <strong>8 500 ₽</strong></p>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="case-card">
+      <div class="case-image">
+        <img src="images/case3.jpg" alt="Ресторан Пиросмани">
+      </div>
+      <div class="case-content">
+        <span class="case-tag">Telegram / SMM</span>
+        <h3>Ресторан грузинской кухни "Пиросмани"</h3>
+        <p class="task">Telegram-канал заброшен 4 месяца, 380 подписчиков, нулевая активность. Нужно оживить и привлекать гостей.</p>
+        <div class="case-results">
+          <div class="result-item">
+            <div class="result-num">1240</div>
+            <div class="result-label">Подписчиков (было 380)</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num">67</div>
+            <div class="result-label">Гостей пришли из Telegram</div>
+          </div>
+        </div>
+        <div class="post-preview">
+          «5 утра. Рынок. Шеф уже здесь. Каждое утро — Кузнечный рынок. Лично. Гиоргий не доверяет закупку никому...»
+        </div>
+        <p class="case-price" style="margin-top:16px">Контент-план + 16 постов/мес: <strong>22 000 ₽</strong></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="section-title">Процесс</div>
+    <div class="section-heading">Как я работаю</div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Бриф</h4>
+        <p>Вы заполняете короткую анкету или мы созваниваемся. Я разбираюсь в задаче и ЦА.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Согласование</h4>
+        <p>Показываю структуру или план — утверждаем до старта, чтобы не было сюрпризов.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Работа</h4>
+        <p>Пишу в срок. Обычно сдаю раньше. Держу в курсе на каждом этапе.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Правки</h4>
+        <p>1-2 правки включены бесплатно. Работаем до результата, который вас устраивает.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Готовы начать?</h2>
+  <p>Напишите задачу — отвечу в течение часа и предложу решение</p>
+  <a href="https://kwork.ru" class="cta-btn">Написать на Kwork</a>
+</section>
+
+</body>
+</html>
